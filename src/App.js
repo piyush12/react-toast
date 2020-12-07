@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Toastify from "./components/Toast/";
+import useNotification from "./hooks/useNotification";
 
 function App() {
+  const toast = useNotification();
+
+  const handleAlert = () => {
+    toast.alert("Alert! This is alert");
+  };
+  const handleSuccess = () => {
+    toast.success("Success! This is alert");
+  };
+  const handleWarning = () => {
+    toast.warning("Warning! This is alert");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Toastify position="bottom right" />
+      <button className="btn" id="button" onClick={handleAlert}>
+        Alert
+      </button>
+      <button className="btn" id="button" onClick={handleSuccess}>
+        Success
+      </button>
+      <button className="btn" id="button" onClick={handleWarning}>
+        Warning
+      </button>
     </div>
   );
 }
